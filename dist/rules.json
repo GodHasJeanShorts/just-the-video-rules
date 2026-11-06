@@ -1,5 +1,5 @@
 {
- "version": 2,
+ "version": 3,
  "rules": [
   {
    "feature": "hideShorts",
@@ -120,7 +120,7 @@
    "observed": "2026-11-04, channel pages /@MrBeast and /@TheFilmGuyNetwork (browse); test/payloads/channel-tabs.json"
   },
   {
-   "feature": "hidePlayables",
+   "feature": "hideOtherProducts",
    "prune": [
     {
      "renderer": "guideEntryRenderer",
@@ -141,7 +141,7 @@
    "observed": "2026-11-04, sidebar guide Explore section (guide), logged in; test/payloads/guide.json"
   },
   {
-   "feature": "hidePlayables",
+   "feature": "hideOtherProducts",
    "prune": [
     {
      "renderer": "richSectionRenderer",
