@@ -1,0 +1,817 @@
+{
+ "version": 2,
+ "rules": [
+  {
+   "feature": "hideShorts",
+   "prune": [
+    {
+     "renderer": "richSectionRenderer",
+     "where": {
+      "path": "content.richShelfRenderer.icon.iconType",
+      "equals": "YOUTUBE_SHORTS_BRAND_24"
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "home",
+      "subscriptions"
+     ],
+     "selector": "ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts])"
+    }
+   ],
+   "observed": "2026-11-04, home (ytInitialData) and subscriptions (browse), logged in; test/payloads/home-feed.json"
+  },
+  {
+   "feature": "hideShorts",
+   "prune": [
+    {
+     "renderer": "gridShelfViewModel",
+     "where": {
+      "path": "header.sectionHeaderViewModel.leadingAccessory.image.sources.0.clientResource.imageName",
+      "equals": "YOUTUBE_SHORTS_BRAND_24"
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "search"
+     ],
+     "selector": "grid-shelf-view-model:has(ytm-shorts-lockup-view-model)"
+    }
+   ],
+   "observed": "2026-11-04, search results (search), logged in; test/payloads/search-results.json"
+  },
+  {
+   "feature": "hideShorts",
+   "prune": [
+    {
+     "renderer": "videoRenderer",
+     "where": {
+      "path": "navigationEndpoint.reelWatchEndpoint",
+      "exists": true
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "search"
+     ],
+     "selector": "ytd-video-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style=\"SHORTS\"])"
+    }
+   ],
+   "observed": "2026-11-04, search results (ytInitialData and DOM), logged in, search \"mrbeast\"; test/payloads/search-results.json"
+  },
+  {
+   "feature": "hideShorts",
+   "prune": [
+    {
+     "renderer": "guideEntryRenderer",
+     "where": {
+      "path": "icon.iconType",
+      "equals": "TAB_SHORTS_CAIRO"
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "sidebar"
+     ],
+     "selector": "ytd-guide-entry-renderer:has(a[title=\"Shorts\"])"
+    },
+    {
+     "surfaces": [
+      "sidebar"
+     ],
+     "selector": "ytd-mini-guide-entry-renderer:has(a[href=\"/shorts/\"])"
+    }
+   ],
+   "observed": "2026-11-04, sidebar guide (guide), logged in; test/payloads/guide.json"
+  },
+  {
+   "feature": "hideShorts",
+   "prune": [
+    {
+     "renderer": "tabRenderer",
+     "where": [
+      {
+       "path": "endpoint.browseEndpoint.params",
+       "equals": "EgZzaG9ydHPyBgUKA5oBAA%3D%3D"
+      },
+      {
+       "path": "selected",
+       "notEquals": true
+      }
+     ]
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "channel"
+     ],
+     "selector": "yt-tab-shape[tab-title=\"Shorts\"]:not([aria-selected=\"true\"])"
+    }
+   ],
+   "observed": "2026-11-04, channel pages /@MrBeast and /@TheFilmGuyNetwork (browse); test/payloads/channel-tabs.json"
+  },
+  {
+   "feature": "hidePlayables",
+   "prune": [
+    {
+     "renderer": "guideEntryRenderer",
+     "where": {
+      "path": "icon.iconType",
+      "equals": "PLAYABLES_LOGO_CAIRO"
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "sidebar"
+     ],
+     "selector": "ytd-guide-entry-renderer:has(a[href=\"/playables\"])"
+    }
+   ],
+   "observed": "2026-11-04, sidebar guide Explore section (guide), logged in; test/payloads/guide.json"
+  },
+  {
+   "feature": "hidePlayables",
+   "prune": [
+    {
+     "renderer": "richSectionRenderer",
+     "where": {
+      "path": "content.richShelfRenderer.contents.0.richItemRenderer.content.miniGameCardViewModel",
+      "exists": true
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "home"
+     ],
+     "selector": "ytd-rich-section-renderer:has(ytd-mini-game-card-view-model)"
+    }
+   ],
+   "observed": "2026-11-05, Home ytInitialData, logged in: section 3 of 29 (5 miniGameCardViewModel cards); DOM ytd-rich-section-renderer containing ytd-mini-game-card-view-model; test/payloads/ai-playables.json"
+  },
+  {
+   "feature": "hideEndScreens",
+   "prune": [
+    {
+     "renderer": "endscreen",
+     "where": {
+      "path": "endscreenRenderer",
+      "exists": true
+     }
+    },
+    {
+     "renderer": "endScreen",
+     "where": {
+      "path": "watchNextEndScreenRenderer",
+      "exists": true
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": ".ytp-ce-element"
+    },
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": ".ytp-ce-hide-button-container"
+    },
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": ".ytp-endscreen-content"
+    },
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": ".ytp-fullscreen-grid"
+    },
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": ".ytp-autonav-endscreen-countdown-overlay"
+    }
+   ],
+   "observed": "2026-11-05, watch pages dQw4w9WgXcQ and O5nskjZ_GoI, logged in: playerResponse.endscreen.endscreenRenderer (4 endscreenElementRenderer), contents playerOverlays.playerOverlayRenderer.endScreen.watchNextEndScreenRenderer (12 endScreenVideoRenderer); DOM .ytp-ce-element (4, shown near the end), .ytp-ce-hide-button-container, .ytp-endscreen-content, .ytp-autonav-endscreen-countdown-overlay and .ytp-fullscreen-grid (a.ytp-modern-videowall-still inside .ytp-fullscreen-grid-stills-container; Brave report with screenshot: one next-video card still showed at the end); test/payloads/watch-extras.json"
+  },
+  {
+   "feature": "hideEndScreens",
+   "prune": [
+    {
+     "renderer": "cards",
+     "where": {
+      "path": "cardCollectionRenderer",
+      "exists": true
+     }
+    },
+    {
+     "renderer": "videoDescriptionInfocardsSectionRenderer"
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": ".ytp-cards-button"
+    },
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": ".ytp-cards-teaser"
+    },
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": "ytd-video-description-infocards-section-renderer"
+    }
+   ],
+   "observed": "2026-11-05, watch pages, logged in: playerResponse.cards.cardCollectionRenderer, description items.6.videoDescriptionInfocardsSectionRenderer; DOM .ytp-cards-button, .ytp-cards-teaser, ytd-video-description-infocards-section-renderer; test/payloads/watch-extras.json"
+  },
+  {
+   "feature": "hideShopping",
+   "prune": [
+    {
+     "renderer": "merchandiseShelfRenderer"
+    },
+    {
+     "renderer": "ticketShelfRenderer"
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": "ytd-merch-shelf-renderer"
+    },
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": "ytd-ticket-shelf-renderer"
+    }
+   ],
+   "observed": "2026-11-05, watch page contents: merchandiseShelfRenderer (CrashCourse #1, 9 items; DOM ytd-merch-shelf-renderer) and ticketShelfRenderer (dQw4w9WgXcQ, 5 events); test/payloads/watch-extras.json"
+  },
+  {
+   "feature": "hidePremium",
+   "prune": [
+    {
+     "renderer": "guideEntryRenderer",
+     "where": {
+      "path": "navigationEndpoint.browseEndpoint.browseId",
+      "equals": "SPunlimited"
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "sidebar"
+     ],
+     "selector": "ytd-guide-entry-renderer:has(a[href=\"/premium\"])"
+    }
+   ],
+   "observed": "2026-11-05, guide (sidebar \"More from YouTube\"), logged in on a free account: guideEntryRenderer icon YOUTUBE_ROUND, browseId SPunlimited, url /premium; DOM ytd-guide-entry-renderer containing a[href=\"/premium\"]; test/payloads/premium.json"
+  },
+  {
+   "feature": "hidePremium",
+   "prune": [
+    {
+     "renderer": "menuServiceItemDownloadRenderer",
+     "where": {
+      "path": "subtitleText",
+      "exists": true
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": "ytd-menu-service-item-download-renderer"
+    }
+   ],
+   "observed": "2026-11-05, watch page O5nskjZ_GoI (get_watch / ytInitialData), logged in on a free account: videoActions.menuRenderer.items.0.menuServiceItemDownloadRenderer with subtitleText \"Try Premium for $0\"; DOM ytd-menu-service-item-download-renderer in the More actions menu; test/payloads/premium.json"
+  },
+  {
+   "feature": "hidePremium",
+   "prune": [
+    {
+     "renderer": "downloadListItemViewModel"
+    }
+   ],
+   "css": [],
+   "observed": "2026-11-05, Home and watch sidebar lockups, logged in on a free account: sheetViewModel.content.listViewModel.listItems.3.downloadListItemViewModel (40 on one watch page); DOM yt-list-item-view-model \"Download\" in the sheet; test/payloads/premium.json"
+  },
+  {
+   "feature": "hidePremium",
+   "prune": [],
+   "css": [
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": ".ytp-variable-speed-panel-preset-button-wrapper:has(.ytp-variable-speed-panel-premium-upsell-icon)"
+    }
+   ],
+   "observed": "2026-11-05, watch page O5nskjZ_GoI, Brave logged in on a free account: Settings > Playback speed shows chips 1.0-2.0 and a 3.0 chip; div.ytp-variable-speed-panel-preset-button-wrapper > button.ytp-variable-speed-panel-preset-button > div.ytp-variable-speed-panel-premium-upsell-icon (one wrapper per chip, 1 match)"
+  },
+  {
+   "feature": "hideOtherProducts",
+   "prune": [
+    {
+     "renderer": "guideSectionRenderer",
+     "where": {
+      "path": "items.1.guideEntryRenderer.icon.iconType",
+      "equals": "UNPLUGGED_LOGO"
+     }
+    },
+    {
+     "renderer": "guideEntryRenderer",
+     "where": {
+      "path": "icon.iconType",
+      "equals": "UNPLUGGED_LOGO"
+     }
+    },
+    {
+     "renderer": "guideEntryRenderer",
+     "where": {
+      "path": "icon.iconType",
+      "equals": "YOUTUBE_MUSIC"
+     }
+    },
+    {
+     "renderer": "guideEntryRenderer",
+     "where": {
+      "path": "icon.iconType",
+      "equals": "YOUTUBE_KIDS_ROUND"
+     }
+    },
+    {
+     "renderer": "guideEntryRenderer",
+     "where": {
+      "path": "icon.iconType",
+      "equals": "YOUTUBE_LABS_RED_LOGO"
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "sidebar"
+     ],
+     "selector": "ytd-guide-section-renderer:has(a[href=\"/labs\"])"
+    },
+    {
+     "surfaces": [
+      "sidebar"
+     ],
+     "selector": "ytd-guide-entry-renderer:has(a[href*=\"tv.youtube.com\"])"
+    },
+    {
+     "surfaces": [
+      "sidebar"
+     ],
+     "selector": "ytd-guide-entry-renderer:has(a[href*=\"music.youtube.com\"])"
+    },
+    {
+     "surfaces": [
+      "sidebar"
+     ],
+     "selector": "ytd-guide-entry-renderer:has(a[href*=\"youtubekids.com\"])"
+    },
+    {
+     "surfaces": [
+      "sidebar"
+     ],
+     "selector": "ytd-guide-entry-renderer:has(a[href=\"/labs\"])"
+    }
+   ],
+   "observed": "2026-11-05, guide (sidebar), logged in: section \"More from YouTube\" with entries YOUTUBE_ROUND (Premium), UNPLUGGED_LOGO (TV), YOUTUBE_MUSIC, YOUTUBE_KIDS_ROUND, YOUTUBE_LABS_RED_LOGO; DOM hrefs /premium, tv.youtube.com, music.youtube.com, youtubekids.com, /labs; test/payloads/other-products.json"
+  },
+  {
+   "feature": "hideAdSlots",
+   "prune": [
+    {
+     "renderer": "richItemRenderer",
+     "where": {
+      "path": "content.adSlotRenderer",
+      "exists": true
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "home"
+     ],
+     "selector": "ytd-rich-item-renderer:has(ytd-ad-slot-renderer)"
+    }
+   ],
+   "observed": "2026-11-05, Home ytInitialData, logged in: 4 adSlotRenderer tiles (slotType SLOT_TYPE_IN_FEED, layout LAYOUT_TYPE_VIDEO_DISPLAY_BUTTON_GROUP) at grid positions 0 and 7 among others; DOM ytd-rich-item-renderer containing ytd-ad-slot-renderer; test/payloads/ad-slots.json"
+  },
+  {
+   "feature": "hideMixes",
+   "prune": [
+    {
+     "renderer": "richItemRenderer",
+     "where": [
+      {
+       "path": "content.lockupViewModel.contentType",
+       "equals": "LOCKUP_CONTENT_TYPE_PLAYLIST"
+      },
+      {
+       "path": "content.lockupViewModel.contentId",
+       "startsWith": "RD"
+      }
+     ]
+    },
+    {
+     "renderer": "lockupViewModel",
+     "where": [
+      {
+       "path": "contentType",
+       "equals": "LOCKUP_CONTENT_TYPE_PLAYLIST"
+      },
+      {
+       "path": "contentId",
+       "startsWith": "RD"
+      }
+     ]
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "home"
+     ],
+     "selector": "ytd-rich-item-renderer:has(a[href*=\"list=RD\"][href*=\"start_radio=1\"])"
+    },
+    {
+     "surfaces": [
+      "search",
+      "watch"
+     ],
+     "selector": "yt-lockup-view-model:has(a[href*=\"list=RD\"][href*=\"start_radio=1\"])"
+    }
+   ],
+   "observed": "2026-11-04, search \"rick astley mix\" (ytInitialData and DOM), logged in; regular playlist PL9706B2CFE250A0E3 in the same results was not matched; test/payloads/feed-items.json"
+  },
+  {
+   "feature": "hideSearchExtras",
+   "prune": [
+    {
+     "renderer": "shelfRenderer",
+     "where": {
+      "path": "title.simpleText",
+      "equals": "Top news"
+     }
+    }
+   ],
+   "css": [],
+   "observed": "2026-11-04, search \"breaking news today\" (ytInitialData), logged in; test/payloads/feed-items.json"
+  },
+  {
+   "feature": "hideSearchExtras",
+   "prune": [
+    {
+     "renderer": "shelfRenderer",
+     "where": {
+      "path": "content.horizontalListRenderer.items.0.gridVideoRenderer",
+      "exists": true
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "search"
+     ],
+     "selector": "ytd-shelf-renderer:has(ytd-grid-video-renderer)"
+    }
+   ],
+   "observed": "2026-11-05, search \"podcast\", \"asmr\", \"fortnite\", \"nba highlights\" (ytInitialData, 8 of 8 horizontal shelves), logged in; DOM (search \"true crime\"): ytd-shelf-renderer containing ytd-grid-video-renderer (the Top news shelf); \"Latest from <channel>\" shelves are vertical lists and stay; test/payloads/search-shelves.json"
+  },
+  {
+   "feature": "hideSearchExtras",
+   "prune": [
+    {
+     "renderer": "shelfRenderer",
+     "where": {
+      "path": "content.horizontalListRenderer.items.0.postRenderer",
+      "exists": true
+     }
+    }
+   ],
+   "css": [],
+   "observed": "2026-11-05, search \"true crime\", \"lofi\", \"fortnite\" (ytInitialData, 3 of 3 \"Latest posts from\" shelves); test/payloads/search-shelves.json"
+  },
+  {
+   "feature": "hideOtherProducts",
+   "prune": [
+    {
+     "renderer": "shelfRenderer",
+     "where": {
+      "path": "content.horizontalMovieListRenderer",
+      "exists": true
+     }
+    },
+    {
+     "renderer": "movieRenderer",
+     "where": {
+      "path": "videoId",
+      "exists": true
+     }
+    }
+   ],
+   "css": [],
+   "observed": "2026-11-05, search \"dune movie review\" (ytInitialData): one Primetime shelf, two movieRenderer cards; test/payloads/search-shelves.json"
+  },
+  {
+   "feature": "hideWatched",
+   "prune": [
+    {
+     "renderer": "richItemRenderer",
+     "where": {
+      "path": "content.lockupViewModel.contentImage.thumbnailViewModel.overlays.0.thumbnailBottomOverlayViewModel.progressBar",
+      "exists": true
+     }
+    },
+    {
+     "renderer": "lockupViewModel",
+     "where": {
+      "path": "contentImage.thumbnailViewModel.overlays.0.thumbnailBottomOverlayViewModel.progressBar",
+      "exists": true
+     }
+    },
+    {
+     "renderer": "videoRenderer",
+     "where": {
+      "path": "thumbnailOverlays.0.thumbnailOverlayResumePlaybackRenderer",
+      "exists": true
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "home",
+      "subscriptions",
+      "channel"
+     ],
+     "selector": "ytd-rich-item-renderer:has(yt-thumbnail-overlay-progress-bar-view-model)"
+    },
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": "yt-lockup-view-model:has(yt-thumbnail-overlay-progress-bar-view-model)"
+    },
+    {
+     "surfaces": [
+      "search"
+     ],
+     "selector": "ytd-video-renderer:has(ytw-thumbnail-overlay-resume-playback-renderer)"
+    }
+   ],
+   "observed": "2026-11-04, Home (ytInitialData + 8 continuations, 29 of 172 with a bar, same 29 in the DOM), Subscriptions (10 of 110), search \"The Film Guy Network\" (25 of 109 videoRenderers); test/payloads/feed-items.json"
+  },
+  {
+   "feature": "hideHomeFeed",
+   "prune": [
+    {
+     "renderer": "richItemRenderer"
+    },
+    {
+     "renderer": "richSectionRenderer"
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "home"
+     ],
+     "selector": "ytd-rich-grid-renderer"
+    }
+   ],
+   "observed": "2026-11-04, Home (ytInitialData and continuations hold only richItemRenderer and richSectionRenderer entries), logged in; test/payloads/home-feed.json"
+  },
+  {
+   "feature": "hideChips",
+   "prune": [
+    {
+     "renderer": "feedFilterChipBarRenderer"
+    },
+    {
+     "renderer": "chipBar"
+    },
+    {
+     "renderer": "relatedChipCloudRenderer"
+    },
+    {
+     "renderer": "chipBarViewModel",
+     "where": {
+      "path": "chipBarStateEntityKey",
+      "exists": false
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "home"
+     ],
+     "selector": "ytd-feed-filter-chip-bar-renderer"
+    },
+    {
+     "surfaces": [
+      "search"
+     ],
+     "selector": "ytd-search-header-renderer yt-chip-cloud-renderer"
+    },
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": "yt-related-chip-cloud-renderer"
+    },
+    {
+     "surfaces": [
+      "channel"
+     ],
+     "selector": "ytd-rich-grid-renderer chip-bar-view-model"
+    }
+   ],
+   "observed": "2026-11-05, logged in: Home header.feedFilterChipBarRenderer (11 chips incl. \"Custom feed\"); search header.searchHeaderRenderer.chipBar (\"Ask YouTube\" style STYLE_AI_MODE_CHIP, \"All\"; continuation variant chipBar.feedFilterChipBarRenderer); watch secondaryResults itemSectionRenderer.header.relatedChipCloudRenderer; channel Videos tab richGridRenderer.header.chipBarViewModel (Latest, Popular, Oldest); none on Subscriptions; test/payloads/chips.json"
+  },
+  {
+   "feature": "hideAI",
+   "prune": [
+    {
+     "renderer": "menuFlexibleItemRenderer",
+     "where": {
+      "path": "topLevelButton.buttonViewModel.iconName",
+      "equals": "SPARK"
+     }
+    },
+    {
+     "renderer": "videoDescriptionYouchatSectionViewModel"
+    },
+    {
+     "renderer": "expandableMetadataRenderer",
+     "where": {
+      "path": "expandedContent.videoSummaryContentViewModel",
+      "exists": true
+     }
+    },
+    {
+     "renderer": "expandableMetadata",
+     "where": {
+      "path": "expandableMetadataRenderer.expandedContent.videoSummaryContentViewModel",
+      "exists": true
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "header"
+     ],
+     "selector": "yt-searchbox .ytSearchboxComponentInputBox > div > button-view-model"
+    },
+    {
+     "surfaces": [
+      "header"
+     ],
+     "selector": "yt-searchbox .ytSearchboxComponentActionsButton:has(button-view-model)"
+    },
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": "ytd-expandable-metadata-renderer:has(video-summary-content-view-model)"
+    },
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": "yt-video-description-youchat-section-view-model"
+    },
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": "ytd-menu-renderer yt-button-view-model:has(button[aria-label=\"Ask\"])"
+    }
+   ],
+   "observed": "2026-11-05, search (14 queries, 50 of 256 videoRenderers carry a summary in expandableMetadata; test/payloads/search-summaries.json); logged in: description summary results.contents.3.expandableMetadataRenderer.expandedContent.videoSummaryContentViewModel (also engagementPanels structuredDescription items.3; DOM ytd-expandable-metadata-renderer containing video-summary-content-view-model, 2 of 2) on the Crash Course video O5nskjZ_GoI, 5 of 14 sampled long videos had one; watch videoActions.menuRenderer.flexibleItems.0 (iconName SPARK, DOM button aria-label \"Ask\"); description structuredDescriptionContentRenderer videoDescriptionYouchatSectionViewModel (DOM yt-video-description-youchat-section-view-model, 2 instances); header yt-searchbox: unfocused .ytSearchboxComponentInputBox > div > button-view-model, focused .ytSearchboxComponentActionsButton button-view-model (aria-label \"Ask YouTube\"); test/payloads/ai-playables.json"
+  },
+  {
+   "feature": "hideSearchExtras",
+   "prune": [
+    {
+     "renderer": "expandableMetadata",
+     "where": {
+      "path": "expandableMetadataRenderer.expandedContent.horizontalCardListRenderer",
+      "exists": true
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "search"
+     ],
+     "selector": "ytd-video-renderer ytd-expandable-metadata-renderer:has(ytd-horizontal-card-list-renderer)"
+    }
+   ],
+   "observed": "2026-11-05, DOM (search \"python tutorial\"): ytd-expandable-metadata-renderer with ytd-horizontal-card-list-renderer inside ytd-video-renderer; 14 search queries, 100 of 256 videoRenderers (73 \"chapters in this video\", 18 auto-generated, 9 \"Matching chapter\"); test/payloads/search-summaries.json"
+  },
+  {
+   "feature": "hideOtherProducts",
+   "prune": [
+    {
+     "renderer": "guideSectionRenderer",
+     "where": {
+      "path": "items.0.guideEntryRenderer.icon.iconType",
+      "equals": "MUSIC_CAIRO"
+     }
+    },
+    {
+     "renderer": "guideSectionRenderer",
+     "where": {
+      "path": "formattedTitle.simpleText",
+      "equals": "Explore"
+     }
+    }
+   ],
+   "css": [],
+   "observed": "2026-11-05, POST /youtubei/v1/guide (logged-out context, so the section list is shorter than in the signed-in sidebar): section titled \"Explore\", items.0 Music (MUSIC_CAIRO); test/payloads/explore.json"
+  },
+  {
+   "feature": "hideShopping",
+   "prune": [
+    {
+     "renderer": "menuServiceItemRenderer",
+     "where": {
+      "path": "icon.iconType",
+      "equals": "MONEY_HEART"
+     }
+    }
+   ],
+   "css": [],
+   "observed": "2026-11-05, 8 watch pages (ytInitialData): MONEY_HEART item on 3 of 8, always first in videoActions.menuRenderer.items; test/payloads/watch-actions.json"
+  },
+  {
+   "feature": "hideRecommendations",
+   "prune": [
+    {
+     "renderer": "secondaryResults",
+     "where": {
+      "path": "secondaryResults.results.0.itemSectionRenderer.sectionIdentifier",
+      "equals": "sid-wn-chips"
+     }
+    }
+   ],
+   "css": [],
+   "observed": "2026-11-05, 6 watch pages (ytInitialData) and one continuation (20 lockups + continuationItemRenderer); test/payloads/watch-sidebar.json"
+  },
+  {
+   "feature": "hideAI",
+   "prune": [],
+   "css": [
+    {
+     "surfaces": [
+      "header"
+     ],
+     "selector": "ytd-masthead #voice-search-button"
+    }
+   ],
+   "observed": "2026-11-05, masthead DOM, logged in: div#voice-search-button inside ytd-masthead #center, containing the \"Search with your voice\" button (1 match)"
+  }
+ ]
+}
