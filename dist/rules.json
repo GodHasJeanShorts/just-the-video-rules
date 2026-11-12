@@ -1,5 +1,5 @@
 {
- "version": 3,
+ "version": 4,
  "rules": [
   {
    "feature": "hideShorts",
@@ -248,6 +248,33 @@
     }
    ],
    "observed": "2026-11-05, watch pages, logged in: playerResponse.cards.cardCollectionRenderer, description items.6.videoDescriptionInfocardsSectionRenderer; DOM .ytp-cards-button, .ytp-cards-teaser, ytd-video-description-infocards-section-renderer; test/payloads/watch-extras.json"
+  },
+  {
+   "feature": "hideEndScreens",
+   "prune": [
+    {
+     "renderer": "paidContentOverlay",
+     "where": {
+      "path": "paidContentOverlayRenderer",
+      "exists": true
+     }
+    }
+   ],
+   "css": [
+    {
+     "surfaces": [
+      "watch"
+     ],
+     "selector": ".ytp-paid-content-overlay"
+    },
+    {
+     "surfaces": [
+      "home"
+     ],
+     "selector": "ytd-video-preview ytm-paid-content-overlay-renderer"
+    }
+   ],
+   "observed": "2026-11-12, logged in: ytInitialPlayerResponse.paidContentOverlay.paidContentOverlayRenderer (\"Includes paid promotion\", durationMs 5000, urlEndpoint to support.google.com/youtube) on 7 of 30 videos checked (Veritasium KfODG5REyss and four more, Mark Rober S7UM5lSgAg8, jjpjjcMeujM); DOM .ytp-paid-content-overlay in #movie_player on the watch page; on a Home hover preview (jzg-W7DOeBw) ytm-paid-content-overlay-renderer inside yt-inline-player-controls in ytd-video-preview, shown about 5 s; test/payloads/watch-extras.json"
   },
   {
    "feature": "hideShopping",
